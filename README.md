@@ -2,11 +2,12 @@
 Functions that together create a cross-sectional or longitudinal aging clock.
 
 **Overview**
-To create an aging clock using cross-sectional data, linear regression modeling is used via the glmnet package for feature selection and the caret package (using 'lm' as the method) for training. 
+
+To create an aging clock using cross-sectional data, linear regression modeling is used via the glmnet package for feature selection and the caret package (using 'lm' as the method) for training. By default, lasso regression is used for feature selection.
 To create an aging clock using longitudinal data, fixed-effect modeling is used via the lme4 package for both feature selection and training. 
 
 ## make_clock
-This function is designed to easily create a full cloick. It thus makes assumptions as to many of the configuration details. These details are ones which I kept consistent in MY analysis.
+This function is designed to easily create a full cloick. It thus makes assumptions as to many of the configuration details. These details are ones which I kept consistent in **my** analysis. If you wish to further customize your clock, call each function individually, using this function as a guide as to the order and ways to call them. 
 | Parameter | Type       | Description|
 |-----------|------------|------------|
 | train_dt  | data.table | datatable to train the clock on. |
@@ -22,9 +23,13 @@ This function is designed to easily create a full cloick. It thus makes assumpti
 | scale       | boolean  | whether or not to scale your continuous covariates (such as age). |
 
 **Return**
+
 List:
 | Name | Description | 
 |------|-------------|
 | "clocks" | list of all clocks. |
 | "metrics_plot" | plot of clock metrics. |
 | "selected_features" | list of "selected_samples": all predictors selected for the clocks; "selected_info": info for those predictors |
+
+## Other Functions
+The code contains many functions. The rest, which should be called individually only if you want to further customize your clock--and understand what you are doing--are described in the code itself. 
